@@ -53,6 +53,7 @@
     showImageNumberLabel: true,
     wrapAround: false,
     disableScrolling: false,
+    reverseNumbering: false,
     /*
     Sanitize Title
     If the caption data is trusted, for example you are hardcoding it in, then leave this to false.
@@ -69,6 +70,9 @@
   };
 
   Lightbox.prototype.imageCountLabel = function(currentImageNum, totalImages) {
+    if (this.options.reverseNumbering) {
+      currentImageNum = totalImages - (currentImageNum - 1);
+    }
     return this.options.albumLabel.replace(/%1/g, currentImageNum).replace(/%2/g, totalImages);
   };
 
